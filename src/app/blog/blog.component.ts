@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from '../model/blog.model';
+import { BlogService } from '../services/blog/blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -8,47 +9,33 @@ import { Blog } from '../model/blog.model';
 })
 export class BlogComponent implements OnInit{
   title = "E-Mentor Frontend Page Blog"
-  blogList: Blog[];
-
+  blogList?: Blog[];
   disabledButton: Boolean = false
 
-  constructor(){
-    this.blogList = [
-      {
-        "blogID": 1,
-        "userID": 1,
-        "title": "Blog 1",
-        "content":"Lorem Ipsum 1 Lorem Ipsum 1 Lorem Ipsum 1",
-        //"datetime": new Date("17/11/2023"),
-      },
-      {
-        "blogID": 2,
-        "userID": 1,
-        "title": "Blog 2",
-        "content":"Lorem Ipsum 2 Lorem Ipsum 2 Lorem Ipsum 2",
-        //"datetime": new Date("08/05/2023"),
-      },
-      {
-        "blogID": 3,
-        "userID": 1,
-        "title": "Blog 3",
-        "content":"Lorem Ipsum 3 Lorem Ipsum 3 Lorem Ipsum 3",
-        //"datetime": new Date("17/05/2023"),
-      },
-      {
-        "blogID": 4,
-        "userID": 1,
-        "title": "Blog 4",
-        "content":"Lorem Ipsum 4 Lorem Ipsum 4 Lorem Ipsum 4",
-        //"datetime": new Date("17/11/2023")
-      }
-    ]
+  constructor(private blogService: BlogService){
 
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
+    this.blogList = this.blogService.getBlogList()
   }
 
+
+  deleteBlog(blog: Blog): void{
+
+    let conf = confirm("Etes vous sure?")
+    if(conf)
+      this.blogService.deleteBlog(blog)
+  }
+
+  addBlog(blog: Blog){
+    this.blogService.addBlog(blog)
+  }
+
+  findBlog(id: number): Blog{
+
+    return this.blogService.findBlog(id)
+  }
   changeTitle(){
     this.title = "E-Mentor Frontend Blog Page"
   }

@@ -34,6 +34,12 @@
           <!--td>
             dateTime: {{blog.dateTime}}
           </td-->
+          <td>
+            <a class="btn btn-danger" (click)="deleteBlog(blog)">Delete</a>
+          </td>
+          <td>
+            <a class="btn btn-success" [routerLink]="['/update-blog', blog.blogID]">Update</a>
+          </td>
         </tr>
         </tbody>
 

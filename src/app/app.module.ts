@@ -10,6 +10,7 @@ import { CommunityComponent } from './community/community.component';
 import { BlogComponent } from './blog/blog.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UpdateBlogComponent } from './update-blog/update-blog.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterComponent } from './register/register.component';
     CommunityComponent,
     BlogComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UpdateBlogComponent
   ],
   imports: [
     BrowserModule,
