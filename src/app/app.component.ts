@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'em-frontend';
+  title = "E-Mentor"
 }
+
+/*
+
+  Interpolation = Property Binding
+  model <----- view
+  {{}}
+
+  Event Binding
+  model -----> view
+
+  Two Way Binding
+  model <-----> view
+ */
