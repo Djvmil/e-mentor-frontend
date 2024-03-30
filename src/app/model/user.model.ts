@@ -1,8 +1,16 @@
-export class Blog{
-  interviewID?: number;
-  title?: string;
-  description?: string;
-  requiredSkills?: string;
-  company?: string;
-  dateTime?: Date;
+export class User{
+  userID?: number;
+  firstname?: string;
+  lastname?: string;
+  genre?: string;
+  email?: string;
+  password?: string;
+  role?: Date;
+  country?: string;
+  phoneNumber?: string;
+  birthDate?: string;
+  isEmailVerified?: Boolean;
+  isPhoneNumbeVerified?: Boolean;
+  dateCreated?: Date;
+  dateUpdated?: Date;
 }

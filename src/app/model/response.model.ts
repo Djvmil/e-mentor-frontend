@@ -1,5 +1,5 @@
-export class Blog{
-  interviewID?: number;
+export class Response{
+  responseID?: number;
   title?: string;
   description?: string;
   requiredSkills?: string;

@@ -1,0 +1,43 @@
+<div class="container">
+
+  <h2>
+    Liste des blogs
+  </h2>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+
+        <tr>
+          <th>User Id</th>
+          <th>User Id</th>
+          <th>Title</th>
+          <th>Content</th>
+        </tr>
+        </thead>
+
+        <tbody *ngFor="let blog of blogList">
+        <tr>
+          <td>
+            blogID: {{blog.blogID}}
+          </td>
+          <td>
+            userID: {{blog.userID}}
+          </td>
+          <td>
+            title: {{blog.title}}
+          </td>
+          <td >
+            content: {{blog.content}}
+          </td>
+          <!--td>
+            dateTime: {{blog.dateTime}}
+          </td-->
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

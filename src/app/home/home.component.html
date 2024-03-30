@@ -1,0 +1,10 @@
+<h2>You are In {{title}}! </h2>
+
+<Button [disabled] = "disabledButton" >Button Status</Button>
+<Button (click) = "changeTitle()" >Change Title</Button>
+
+<h2>Two Way Binding </h2>
+
+<input type="text" [(ngModel)] = "nom">
+
+<h2>Bonjour {{nom}}</h2>

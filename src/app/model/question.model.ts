@@ -1,4 +1,4 @@
-export class Blog{
+export class Question{
   interviewID?: number;
   title?: string;
   description?: string;
