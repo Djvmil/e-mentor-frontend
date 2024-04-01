@@ -6,10 +6,9 @@ import { Blog } from '../../model/blog.model';
 })
 export class BlogService {
   blogList: Blog[];
-  blog?: Blog;
 
   constructor() {
-  this.blogList = [
+      this.blogList = [
         {
           "blogID": 1,
           "userID": 1,
@@ -36,7 +35,8 @@ export class BlogService {
           "userID": 1,
           "title": "Blog 4",
           "content":"Lorem Ipsum 4 Lorem Ipsum 4 Lorem Ipsum 4",
-          //"datetime": new Date("17/11/2023")
+          //"datetime": new Date("17/05/2023"),
+
         }
       ]
 
@@ -55,10 +55,7 @@ export class BlogService {
   }
 
   findBlog(id: number): Blog{
-    this.blog = this.blogList?.find(p => p.blogID == id)
-
-    if(this.blog) return this.blog;
-    else return new Blog()
+    return this.blogList.find(p => p.blogID == id)!;
   }
 
   addBlog(blog: Blog){

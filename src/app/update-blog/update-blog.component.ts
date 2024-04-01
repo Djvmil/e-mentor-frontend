@@ -9,6 +9,7 @@ import { BlogService } from '../services/blog/blog.service';
   styleUrl: './update-blog.component.css'
 })
 export class UpdateBlogComponent {
+  blogList?: Blog[];
 
     constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService){
     }
@@ -16,6 +17,7 @@ export class UpdateBlogComponent {
   ngOnInit(): void {
     this.blogList = this.blogService.getBlogList()
   }
+
   findBlog(id: number): Blog{
 
     return this.blogService.findBlog(id)
