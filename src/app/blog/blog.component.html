@@ -1,49 +1,103 @@
-<div class="container">
+<div class="position-relative">
+  <!-- Hero for FREE version -->
+  <section class="section section-lg section-hero section-shaped">
+    <!-- Background circles -->
+    <div class="shape shape-style-1 shape-primary">
+      <span class="span-150"></span>
+      <span class="span-50"></span>
+      <span class="span-50"></span>
+      <span class="span-75"></span>
+      <span class="span-100"></span>
+      <span class="span-75"></span>
+      <span class="span-50"></span>
+      <span class="span-100"></span>
+      <span class="span-50"></span>
+      <span class="span-100"></span>
+    </div>
+    <div class="container shape-container d-flex align-items-center py-lg">
+      <div class="col px-0">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-6 text-center">
+            <img src="./assets/img/brand/argon-white.png" style="width: 200px;" class="img-fluid">
+            <p class="lead text-white"> Entretien Mentor est une application mobile pour aider les candidats à se préparer aux entretiens d'emploi et à bénéficier d'une communauté de soutien</p>
+            <div class="btn-wrapper mt-5">
+              <a href="https://www.creative-tim.com/product/argon-design-system-angular?ref=adsa-index-header" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
+                <span class="btn-inner--icon"><i class="ni ni-cloud-download-95"></i></span>
+                <span class="btn-inner--text">Download App</span>
+              </a>
+              <a href="https://github.com/Djvmil" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0" target="_blank">
+                <span class="btn-inner--icon"><i class="fa fa-github"></i></span>
+                <span class="btn-inner--text">
+                    <span class="text-warning">Star us</span> on Github</span>
+              </a>
+            </div>
+            <div class="mt-5">
+              <small class="text-white font-weight-bold mb-0 mr-2">*proudly coded by</small>
+              <img src="./assets/img/brand/creativetim-white-slim.png" style="height: 28px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
 
-  <h2>
-    Liste des blogs
-  </h2>
 
-  <div class="card shadow mb-4">
-    <div class="card-body">
-      <table class="table table-striped">
-        <thead>
+  <div class="container">
 
-        <tr>
-          <th>User Id</th>
-          <th>User Id</th>
-          <th>Title</th>
-          <th>Content</th>
-        </tr>
-        </thead>
+    <h2>
+      Liste des blogs
+    </h2>
 
-        <tbody *ngFor="let blog of blogList">
-        <tr>
-          <td>
-            blogID: {{blog.blogID}}
-          </td>
-          <td>
-            userID: {{blog.userID}}
-          </td>
-          <td>
-            title: {{blog.title}}
-          </td>
-          <td >
-            content: {{blog.content}}
-          </td>
-          <!--td>
-            dateTime: {{blog.dateTime}}
-          </td-->
-          <td>
-            <a class="btn btn-danger" (click)="deleteBlog(blog)">Delete</a>
-          </td>
-          <td>
-            <a class="btn btn-success" [routerLink]="['/update-blog', blog.blogID]">Update</a>
-          </td>
-        </tr>
-        </tbody>
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
 
-      </table>
+          <tr>
+            <th>User Id</th>
+            <th>User Id</th>
+            <th>Title</th>
+            <th>Content</th>
+          </tr>
+          </thead>
+
+          <tbody *ngFor="let blog of blogList">
+          <tr>
+            <td>
+              blogID: {{blog.blogID}}
+            </td>
+            <td>
+              userID: {{blog.userID}}
+            </td>
+            <td>
+              title: {{blog.title}}
+            </td>
+            <td >
+              content: {{blog.content}}
+            </td>
+            <!--td>
+              dateTime: {{blog.dateTime}}
+            </td-->
+            <td>
+              <a class="btn btn-danger" (click)="deleteBlog(blog)">Delete</a>
+            </td>
+            <td>
+              <a class="btn btn-success" [routerLink]="['/update-blog', blog.blogID]">Update</a>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
     </div>
   </div>
+
 </div>
+
+

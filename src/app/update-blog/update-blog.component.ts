@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from '../model/blog.model';
 import { BlogService } from '../services/blog/blog.service';
 
@@ -11,7 +11,7 @@ import { BlogService } from '../services/blog/blog.service';
 export class UpdateBlogComponent {
   blogList?: Blog[];
 
-    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService){
+    constructor(private blogService: BlogService, private activatedRoute: ActivatedRoute, private router: Router){
     }
 
   ngOnInit(): void {
@@ -20,6 +20,7 @@ export class UpdateBlogComponent {
 
   findBlog(id: number): Blog{
 
+     //this.router.navigate(["blog"])
     return this.blogService.findBlog(id)
   }
 

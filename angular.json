@@ -30,6 +30,10 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+              "rxjs/add/operator/filter",
+              "ng2-nouislider"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -37,6 +41,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/assets/scss/argon.scss",
               "src/styles.css"
             ],
             "scripts": [
@@ -44,13 +49,24 @@
               "node_modules/jquery/dist/jquery.js"
             ],
             "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "prerender": false,
+            "ssr": false
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -66,9 +82,18 @@
               "outputHashing": "all"
             },
             "development": {
-              "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": false,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
+              "outputHashing": "all"
             }
           },
           "defaultConfiguration": "production"
