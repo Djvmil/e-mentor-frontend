@@ -6,6 +6,9 @@ export const environment = {
   production: true
 };
 
+export const apiUrl: string = "http://51.75.27.211:8989/em/api";
+
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

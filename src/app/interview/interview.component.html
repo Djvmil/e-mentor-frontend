@@ -1,3 +1,5 @@
+
+
 <div class="position-relative">
   <!-- Hero for FREE version -->
   <section class="section section-lg section-hero section-shaped">
@@ -47,9 +49,70 @@
     </div>
   </section>
 
+  <app-detail [interview]="interviewInput" [data]="'Donnees Transmises'" (interviewUpdated) = "interviewUpdated($event)"></app-detail>
 
   <div class="container">
 
+    <h2>
+      Liste des blogs
+    </h2>
+
+    <div class="card shadow mb-4">
+      <div class="card-body">
+      <div class="d-flex justify-content-center">
+        <div class="input-group w-auto">
+            <input
+              type="text"
+              class="form-control"
+              #textSearch [(ngModel)] = "textSearch.value"
+              name="textSearch"
+              placeholder="Example input"
+              aria-label="Example input"
+              aria-describedby="button-addon1"
+              (keyup)="onKeyUp(textSearch.value)"
+            />
+            <button class="btn btn-primary" type="button" (click)="searchInterview(textSearch.value)" id="button-addon1" data-mdb-ripple-color="dark">
+              Search
+            </button>
+        </div>
+    </div>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Interview Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Required Skills</th>
+          </tr>
+          </thead>
+
+          <tbody *ngFor="let interview of interviews | searchFilter: textSearch.value">
+          <tr>
+            <td>
+              {{interview.interviewID}}
+            </td>
+            <td >
+             {{interview.title}}
+            </td>
+            <td>
+             {{interview.description}}
+            </td>
+            <td>
+             {{interview.requiredSkills}}
+            </td>
+            <td>
+              <a class="btn btn-danger" (click)="deleteInterview(interview)">Delete</a>
+            </td>
+            <td>
+              <a class="btn btn-success" (click)="updateInterview(interview)">Update</a>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
   </div>
+
 
 </div>

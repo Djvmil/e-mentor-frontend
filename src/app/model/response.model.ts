@@ -1,8 +1,12 @@
+import { Interview } from "./interview.model";
+import { Question } from "./question.model";
+import { User } from "./user.model";
+
 export class Response{
   responseID?: number;
-  title?: string;
-  description?: string;
-  requiredSkills?: string;
-  company?: string;
-  dateTime?: Date;
+  responseText?: string;
+  score?: number;
+  user?: User;
+  question?: Question;
+  interview?: Interview;
 }

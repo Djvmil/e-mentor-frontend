@@ -8,19 +8,24 @@ import { User } from '../model/user.model';
 })
 export class RegisterComponent  implements OnInit{
   title = "E-Mentor Frontend Page Register"
-  user: User;
+  user?: User;
+  test : Date = new Date();
+  focus: any;
+  focus1: any;
+  focus2: any;
 
   constructor(){
-    this.user = new User()
 
   }
 
   ngOnInit(): void{
+    this.user = new User()
 
   }
 
 
-  register(){
+  onSignUp(){
+    console.log("onSignUp", this.user)
 
   }
 

@@ -1,0 +1,26 @@
+[
+  {
+    "interviewID": 1,
+    "title": "Entretien pour développeur web",
+    "description": "Entretien pour un poste de développeur web junior.",
+    "requiredSkills": "HTML, CSS, JavaScript",
+    "company": "TechCorp",
+    "dateTime": "2024-01-15T10:00:00"
+  },
+  {
+    "interviewID": 2,
+    "title": "Entretien pour gestionnaire de projet",
+    "description": "Entretien pour un poste de gestionnaire de projet expérimenté.",
+    "requiredSkills": "Gestion de projet, Communication, Leadership",
+    "company": "Consulting Inc.",
+    "dateTime": "2024-01-20T14:00:00"
+  },
+  {
+    "interviewID": 3,
+    "title": "Entretien pour CM",
+    "description": "Entretien pour un poste de CM expérimenté.",
+    "requiredSkills": "Gestion de projet, Communication, Leadership",
+    "company": "Consulting Inc.",
+    "dateTime": "2024-01-20T14:00:00"
+  }
+]

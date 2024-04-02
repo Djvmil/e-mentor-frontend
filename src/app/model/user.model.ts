@@ -5,7 +5,7 @@ export class User{
   genre?: string;
   email?: string;
   password?: string;
-  role?: Date;
+  roles?: string[];
   country?: string;
   phoneNumber?: string;
   birthDate?: string;

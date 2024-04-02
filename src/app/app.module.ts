@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommunityComponent } from './community/community.component';
 import { BlogComponent } from './blog/blog.component';
@@ -12,6 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { InterviewComponent } from './interview/interview.component';
+import { SearchFilterPipe } from './pipe/search-filter.pipe';
+import { DetailComponent } from './interview/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +26,19 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     UpdateBlogComponent,
-    NavbarComponent
+    NavbarComponent,
+    InterviewComponent,
+    SearchFilterPipe,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     provideClientHydration()
   ],

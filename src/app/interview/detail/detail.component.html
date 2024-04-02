@@ -1,0 +1,51 @@
+<div class="container">
+
+  <h2>
+    Details
+  </h2>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Denomination</th>
+          <th>Details</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>ID </td>
+            <td>{{interview?.interviewID}} </td>
+          </tr>
+
+          <tr>
+            <td>TITLE </td>
+            <td>{{interview?.title}} </td>
+          </tr>
+
+          <tr>
+            <td>DESCRIPTION </td>
+            <td>{{interview?.description}} </td>
+          </tr>
+
+          <tr>
+            <td>REQUIRED SKILL </td>
+            <td>{{interview?.requiredSkills}} </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="input-group w-auto ">
+        <a class="btn btn-success mb-4" (click)="updateInterview(interview)">Update</a>
+
+    </div>
+  </div>
+</div>
