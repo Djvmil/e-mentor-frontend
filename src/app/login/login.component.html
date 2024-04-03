@@ -37,6 +37,10 @@
               <div class="text-center text-muted mb-4">
                 <small>Or sign in with credentials</small>
               </div>
+
+              <div class="alert alert-danger" *ngIf="erreur==1">
+                <strong>login ou mot de passe erronés..</strong>
+                </div>
               <form role="form">
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative">

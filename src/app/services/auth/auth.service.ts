@@ -6,8 +6,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  users: User[] = [{"email":"admin@em.com","password":"123","roles":['ADMIN']},
-  {"email":"nadhem@em.com","password":"123","roles":['USER']} ];
+  users: User[] = [
+    {"email":"admin@em.com","password":"123","roles":['ADMIN']},
+    {"email":"nadhem@em.com","password":"123","roles":['USER']}
+  ];
 
   public loggedUser?: string;
   public isloggedIn: Boolean = false;
@@ -15,18 +17,18 @@ export class AuthService {
   constructor(private router: Router) { }
 
   logout() {
-    this.isloggedIn= false;
+    this.isloggedIn = false;
     this.loggedUser = undefined!;
     this.roles = undefined!;
     localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn',String(this.isloggedIn));
+    localStorage.setItem('isloggedIn', String(this.isloggedIn));
     this.router.navigate(['/login']);
   }
 
-  SignIn(user :User):Boolean{
+  signIn(user :User):Boolean{
     let validUser: Boolean = false;
     this.users.forEach((curUser) => {
-      if(user.email == curUser.email && user.password==curUser.password) {
+      if(user.email == curUser.email && user.password == curUser.password) {
         validUser = true;
         this.loggedUser = curUser.email;
         this.isloggedIn = true;

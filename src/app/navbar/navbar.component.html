@@ -45,19 +45,8 @@
           </a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Account</span>
-          </a>
-          <div class="dropdown-menu">
-            <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
-            <a [routerLink]="['/login']" class="dropdown-item">Login</a>
-            <a [routerLink]="['/register']" class="dropdown-item">Register</a>
-          </div>
-        </li>
       </ul>
-      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
       <!--li class="nav-item">
           <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
             <i class="fa fa-facebook-square"></i>
@@ -83,12 +72,28 @@
           </a>
         </li>
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a href="https://www.creative-tim.com/product/argon-design-system-angular?ref=adsa-navbar" target="_blank" class="btn btn-neutral btn-icon">
+          <a *ngIf="!authService.isAdmin()" href="https://www.creative-tim.com/product/argon-design-system-angular?ref=adsa-navbar" target="_blank" class="btn btn-neutral btn-icon">
             <span class="btn-inner--icon">
               <i class="fa fa-cloud-download mr-2"></i>
             </span>
             <span class="nav-link-inner--text">Download</span>
           </a>
+        </li>
+        <li class="nav-item"> {{authService.loggedUser}} </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text d-lg-2">Account</span>
+          </a>
+          <div *ngIf="!authService.isloggedIn" class="dropdown-menu">
+            <a [routerLink]="['/login']" class="dropdown-item">Login</a>
+            <a [routerLink]="['/register']" class="dropdown-item">Register</a>
+          </div>
+
+          <div *ngIf="authService.isloggedIn" class="dropdown-menu">
+            <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
+            <a (click)="authService.logout()" class="dropdown-item">Logout</a>
+          </div>
         </li>
       </ul>
     </div>

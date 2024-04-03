@@ -45,7 +45,7 @@ export class RestService {
 
 
   updateInterview(interview: Interview): Observable<Interview>{
-    return this.http.put<Interview>(endpoint+"/interviews", interview)
+    return this.http.put<Interview>(endpoint+"/interviews", interview, httpOptions)
   }
 
 
