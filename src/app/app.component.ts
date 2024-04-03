@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { filter, Subscription } from 'rxjs';
+import { AuthService } from './services/auth/auth.service';
 
 var didScroll;
 var lastScrollTop = 0;
@@ -20,7 +21,8 @@ export class AppComponent  implements OnInit {
 
 
     constructor(private renderer : Renderer2, private router: Router,
-      @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {
+      @Inject(DOCUMENT,) private document: any, private element : ElementRef,
+      public location: Location, private authService: AuthService) {
 
     }
 
@@ -80,6 +82,16 @@ export class AppComponent  implements OnInit {
           });
       });
       this.hasScrolled();
+
+
+      let isloggedin = localStorage.getItem('isloggedIn');
+      let loggedUser = localStorage.getItem('loggedUser');
+
+
+      if (isloggedin != "true" || !loggedUser)
+        this.router.navigate(['/login']);
+      else
+        this.authService.setLoggedUserFromLocalStorage(loggedUser);
     }
 }
 
