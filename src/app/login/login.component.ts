@@ -26,11 +26,19 @@ export class LoginComponent {
 
   onSignIn(){
     console.log("onSignIn", this.user)
-    let isValidUser: Boolean = this.authService.signIn(this.user);
-    if (isValidUser)
-      this.router.navigate(['/']);
-    else
-      this.erreur = 1;//alert('Login ou mot de passe incorrecte!');
+    this.authService.signIn(this.user).subscribe({
+      next: (data) => {
 
+        let jwtToken = data.headers.get("Authorization")!;
+
+        this.authService.saveToken(jwtToken);
+        this.router.navigate(["/h"])
+
+      },
+      error: (err: any) => {
+        this.erreur = 1;
+      }
+    });
   }
+
 }

@@ -18,6 +18,7 @@ export class AuthService {
   ];
 
   public loggedUser?: string;
+  public jwtToken?: string;
   public isloggedIn: Boolean = false;
   public roles?: string[];
 
@@ -34,13 +35,12 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  signIn(user :User): Boolean{
+  signIn(user :User){
 
+    /*
     let validUser: Boolean = false;
 
-    this.restService.signIn(user)
-
-    /*this.users.forEach((curUser) => {
+    this.users.forEach((curUser) => {
       if(user.email == curUser.email && user.password == curUser.password) {
         validUser = true;
         this.loggedUser = curUser.email;
@@ -51,8 +51,17 @@ export class AuthService {
         localStorage.setItem('isloggedIn', String(this.isloggedIn));
       }
     });*/
-    return validUser;
+    return this.restService.signIn(user);
   }
+
+
+  saveToken(token: string){
+    localStorage.setItem('jwtToken', token);
+    this.jwtToken = token;
+    this.isloggedIn = true
+
+  }
+
 
   isAdmin():Boolean{
     if (!this.roles) //this.roles== undefiened
