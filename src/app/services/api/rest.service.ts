@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angul
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { Interview } from '../../model/interview.model';
+import { User } from '../../model/user.model';
 
 const endpoint = 'http://51.75.27.211:8989/em/api';
 
@@ -38,6 +39,9 @@ export class RestService {
     return throwError(() => 'Something bad happened; please try again later.');
   }
 
+  signIn(): Observable<User>{
+    return this.http.post<User>(endpoint+"/login")
+  }
 
   getInterviewList(): Observable<Interview[]>{
     return this.http.get<Interview[]>(endpoint+"/interviews")

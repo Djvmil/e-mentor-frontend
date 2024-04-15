@@ -34,9 +34,13 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  signIn(user :User):Boolean{
+  signIn(user :User): Boolean{
+
     let validUser: Boolean = false;
-    this.users.forEach((curUser) => {
+
+    this.restService.signIn(user)
+
+    /*this.users.forEach((curUser) => {
       if(user.email == curUser.email && user.password == curUser.password) {
         validUser = true;
         this.loggedUser = curUser.email;
@@ -46,7 +50,7 @@ export class AuthService {
         localStorage.setItem('loggedUser', this.loggedUser!);
         localStorage.setItem('isloggedIn', String(this.isloggedIn));
       }
-    });
+    });*/
     return validUser;
   }
 
