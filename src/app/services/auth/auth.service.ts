@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../model/user.model';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs'
+import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { RestService } from '../api/rest.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+
   users: User[] = [
     {"email":"admin@em.com","password":"123","roles":['ADMIN']},
     {"email":"nadhem@em.com","password":"123","roles":['USER']}
@@ -14,7 +20,10 @@ export class AuthService {
   public loggedUser?: string;
   public isloggedIn: Boolean = false;
   public roles?: string[];
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private restService: RestService) {
+
+  }
 
   logout() {
     this.isloggedIn = false;
