@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs'
 import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { RestService } from '../api/rest.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -21,6 +22,8 @@ export class AuthService {
   public jwtToken?: string;
   public isloggedIn: Boolean = false;
   public roles?: string[];
+
+  private helper = new JwtHelperService()
 
   constructor(private router: Router, private restService: RestService) {
 
@@ -60,9 +63,13 @@ export class AuthService {
     this.jwtToken = token;
     this.isloggedIn = true
 
+    this.decodeToken()
+
   }
 
+  decodeToken(){
 
+  }
 
   getToken(): string{
     return localStorage.getItem('jwtToken')!;
