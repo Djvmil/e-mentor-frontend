@@ -25,14 +25,18 @@ export class LoginComponent {
   }
 
   onSignIn(){
-    console.log("onSignIn", this.user)
+    console.log("onSignIn object: ", this.user)
     this.authService.signIn(this.user).subscribe({
       next: (data) => {
+        console.log("onSignIn response: ", data)
 
-        let jwtToken = data.headers.get("Authorization")!;
+        let jwtToken = data.body?.accesToken!;
+
+
+        console.log("onSignIn jwtToken: ", jwtToken)
 
         this.authService.saveToken(jwtToken);
-        this.router.navigate(["/h"])
+        this.router.navigate(["/"])
 
       },
       error: (err: any) => {

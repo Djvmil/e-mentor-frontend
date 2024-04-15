@@ -18,8 +18,8 @@ export class InterviewService {
 
   }
 
-  getInterviewList(): Observable<Interview[]>{
-    return this.restService.getInterviewList()
+  getInterviewList(token: string): Observable<Interview[]>{
+    return this.restService.getInterviewList(token)
   }
 
   updateInterview(interview: Interview): Observable<Interview>{

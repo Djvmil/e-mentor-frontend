@@ -63,6 +63,11 @@ export class AuthService {
   }
 
 
+
+  getToken(): string{
+    return localStorage.getItem('jwtToken')!;
+  }
+
   isAdmin():Boolean{
     if (!this.roles) //this.roles== undefiened
       return false;

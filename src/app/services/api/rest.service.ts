@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { Interview } from '../../model/interview.model';
 import { User } from '../../model/user.model';
+import { LoginResponse } from '../../model/login-response.mode';
 
 const endpoint = 'http://51.75.27.211:8989/em/api';
 
@@ -20,6 +21,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RestService {
+
+  token?: string;
 
   constructor(private http: HttpClient) { }
 
@@ -39,12 +42,17 @@ export class RestService {
     return throwError(() => 'Something bad happened; please try again later.');
   }
 
-  signIn(): Observable<User>{
-    return this.http.post<User>(endpoint+"/login")
+  signIn(user: User){
+    return this.http.post<LoginResponse>(endpoint+"/login", user, {observe: 'response'})
   }
 
-  getInterviewList(): Observable<Interview[]>{
-    return this.http.get<Interview[]>(endpoint+"/interviews")
+  getInterviewList(token: string): Observable<Interview[]>{
+
+    let jwt = "Bearer "+token
+    let httpHeaders = new HttpHeaders({"Authorization": jwt})
+
+    console.log("Bearer "+token)
+    return this.http.get<Interview[]>(endpoint+"/interviews", {headers: httpHeaders})
   }
 
 

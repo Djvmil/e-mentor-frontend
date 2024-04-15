@@ -3,6 +3,7 @@ import { Interview } from '../model/interview.model';
 import { InterviewService } from '../services/interview/interview.service';
 import { RestService } from '../services/api/rest.service';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-interview',
@@ -13,12 +14,13 @@ export class InterviewComponent implements OnInit{
   interviews!: Interview[];
   interviewInput!: Interview;
 
-  constructor(private service: InterviewService){
+  constructor(private service: InterviewService, private authService: AuthService){
 
   }
 
   ngOnInit(): void {
-    this.service.getInterviewList().subscribe((result: Interview[]) => {
+    let token = this.authService.getToken();
+    this.service.getInterviewList(token).subscribe((result: Interview[]) => {
       console.log(result)
       this.interviews = result
     })
