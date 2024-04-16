@@ -33,8 +33,8 @@ export class AuthService {
     this.isloggedIn = false;
     this.loggedUser = undefined!;
     this.roles = undefined!;
+    this.jwtToken = undefined!;
     localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn', String(this.isloggedIn));
     this.router.navigate(['/login']);
   }
 
@@ -68,6 +68,12 @@ export class AuthService {
   }
 
   decodeToken(){
+    if(this.jwtToken){
+        const tokenDec = this.helper.decodeToken(this.jwtToken)
+        this.roles = tokenDec.roles
+          this.loggedUser = tokenDec.sub
+
+    }
 
   }
 
@@ -79,7 +85,7 @@ export class AuthService {
     if (!this.roles) //this.roles== undefiened
       return false;
 
-    return (this.roles.indexOf('ADMIN') >-1);
+    return (this.roles.indexOf('ADMIN') >= 0);
   }
 
   setLoggedUserFromLocalStorage(login : string) {

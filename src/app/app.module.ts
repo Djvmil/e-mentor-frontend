@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommunityComponent } from './community/community.component';
 import { BlogComponent } from './blog/blog.component';
@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { InterviewComponent } from './interview/interview.component';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 import { DetailComponent } from './interview/detail/detail.component';
+import { InterceptorService } from './services/api/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,12 @@ import { DetailComponent } from './interview/detail/detail.component';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

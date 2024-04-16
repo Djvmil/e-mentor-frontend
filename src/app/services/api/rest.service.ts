@@ -46,13 +46,15 @@ export class RestService {
     return this.http.post<LoginResponse>(endpoint+"/login", user, {observe: 'response'})
   }
 
-  getInterviewList(token: string): Observable<Interview[]>{
-
+  getInterviewList(): Observable<Interview[]>{
+/*
     let jwt = "Bearer "+token
     let httpHeaders = new HttpHeaders({"Authorization": jwt})
 
     console.log("Bearer "+token)
-    return this.http.get<Interview[]>(endpoint+"/interviews", {headers: httpHeaders})
+    return this.http.get<Interview[]>(endpoint+"/interviews", {headers: httpHeaders})*/
+
+    return this.http.get<Interview[]>(endpoint+"/interviews")
   }
 
 

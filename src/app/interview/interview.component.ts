@@ -19,8 +19,7 @@ export class InterviewComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    let token = this.authService.getToken();
-    this.service.getInterviewList(token).subscribe((result: Interview[]) => {
+    this.service.getInterviewList().subscribe((result: Interview[]) => {
       console.log(result)
       this.interviews = result
     })
