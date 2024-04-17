@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../model/user.model';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { Response } from '../model/response.model';
 
 @Component({
   selector: 'app-login',
@@ -27,19 +28,15 @@ export class LoginComponent {
   onSignIn(){
     console.log("onSignIn object: ", this.user)
     this.authService.signIn(this.user).subscribe({
-      next: (data) => {
-        console.log("onSignIn response: ", data)
-
-        let jwtToken = data.body?.accesToken!;
-
-
-        console.log("onSignIn jwtToken: ", jwtToken)
+      next: (response) => {
+        let jwtToken = response.body?.data?.accesToken!;
 
         this.authService.saveToken(jwtToken);
         this.router.navigate(["/"])
 
       },
       error: (err: any) => {
+        console.log("error: ", err)
         this.erreur = 1;
       }
     });
