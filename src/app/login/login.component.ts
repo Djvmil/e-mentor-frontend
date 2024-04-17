@@ -26,7 +26,6 @@ export class LoginComponent {
   }
 
   onSignIn(){
-    console.log("onSignIn object: ", this.user)
     this.authService.signIn(this.user).subscribe({
       next: (response) => {
         let jwtToken = response.body?.data?.accesToken!;
